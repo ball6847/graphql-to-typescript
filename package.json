@@ -37,7 +37,8 @@
     "build": "tsc",
     "build:watch": "tsc -w",
     "clean": "rimraf dist/*",
-    "prepublish": "npm run clean && npm run lint && npm run test && npm run build",
+    "prepublish": "npm run clean && npm run lint && npm run test && npm run build && cp package.json ./dist/",
+    "publish": "gh-pages --dist ./dist/ --branch npmjs",
     "start": "npm run build:watch",
     "test": "mocha --require ts-node/register src/**/*.test.ts",
     "test:watch": "npm run test -- --watch --watch-extensions test.ts",
@@ -45,7 +46,7 @@
     "lint": "tslint src/**/*.ts"
   },
   "bin": {
-    "graphql-to-typescript": "./dist/index.js"
+    "graphql-to-typescript": "./index.js"
   },
   "nyc": {
     "extension": [
